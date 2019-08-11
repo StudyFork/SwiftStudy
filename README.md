@@ -6,12 +6,12 @@
 
 
 ## 스터디원
-- [김수용](https://github.com/Mainea)
-- [김태성](https://github.com/kts6056)
-- [박채완](https://github.com/seizze)
-- [윤자경](https://github.com/JakyungYoon)
-- [이재성](https://github.com/RebirthLee)
-- [정석준](https://github.com/sjjeong)
+- [김수용](https://github.com/Mainea) Mainea
+- [김태성](https://github.com/kts6056) kts6056
+- [박채완](https://github.com/seizze) seizze
+- [윤자경](https://github.com/JakyungYoon) JakyungYoon
+- [이재성](https://github.com/RebirthLee) RebirthLee
+- [정석준](https://github.com/sjjeong) sjjeong
 
 ## 목차
 - 박채완/윤자경 [CHAPTER 01 스위프트](https://github.com/StudyFork/SwiftStudy/tree/master/CHAPTER01)
