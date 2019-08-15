@@ -23,6 +23,8 @@
 
 
 
+
+
 마크업 문법을 따른 간단한 주석 예시입니다.
 
 ```swift
@@ -50,7 +52,9 @@ enum FakeArrayError: ErrorType {...
 
 위 주석을 퀵헬프를 통해 확인하면 다음과 같이 나타납니다(스위프트 5, Xcode 10 기준).
 
-  <img src="./img/image4_quickhelp_example.png" width="500">
+  <img src="./img/image4_quickhelp_example.png" width="300">
+
+
 
 
 
@@ -66,16 +70,46 @@ enum FakeArrayError: ErrorType {...
 
 ## 2.4 변수와 상수
 
+변수는 생성 후 데이터값을 변경할 수 있지만, 상수는 한번 값을 설정하면 다음에 변경할 수 없습니다.
+
+
+
 ### 2.4.1 변수
+
+`var` 키워드를 이용해 변수를 생성합니다. `var [변수명]: [데이터 타입] = [값]` 형태로 선언합니다.
+
+> :exclamation: 데이터 타입을 생략하면 컴파일러가 타입을 추론하여 타입을 지정하지만, 이 기능은 스위프트에 많이 익숙해졌을 때 사용하길 권합니다.
+
+변수 선언 및 사용 예를 나타낸 코드입니다.
+
+```swift
+var name: String = "yagom"
+
+print("저의 이름은 \(name)입니다.")
+```
 
 
 
 ### 2.4.2 상수
+
+`let` 키워드를 이용해 상수를 생성합니다. `let [변수명]: [데이터 타입] = [값]` 형태로 선언합니다. 변수 선언과 마찬가지로 데이터 타입을 생략하여 타입 추론 기능을 이용할 수 있습니다.
+
+상수 선언 및 사용 예를 나타낸 코드입니다.
+
+```swift
+let name: String = "yagom"
+
+name = "야곰" // 상수로 선언된 값은 변경할 수 없습니다. 컴파일 오류가 발생합니다.
+```
+
+> :exclamation: 상수로 값을 선언하면, 이후 코드에서 값의 변화가 없다는 사실을 직관적으로 알 수 있습니다.
 
 
 
 ---
 
 이미지 출처
-[API Design Guidelines](https://swift.org/documentation/api-design-guidelines/)
-[Markup Formatting Reference](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/index.html#//apple_ref/doc/uid/TP40016497-CH2-SW1)
+
+* [API Design Guidelines](https://swift.org/documentation/api-design-guidelines/)
+
+* [Markup Formatting Reference](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/index.html#//apple_ref/doc/uid/TP40016497-CH2-SW1)
