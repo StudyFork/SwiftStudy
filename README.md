@@ -15,7 +15,7 @@
 
 ## 목차
 - 박채완/윤자경 [CHAPTER 01 스위프트](https://github.com/StudyFork/SwiftStudy/tree/master/CHAPTER01)
-- 김수용/박채완 [CHAPTER 02 스위프트 처음 시작하기]()
+- 김수용/박채완 [CHAPTER 02 스위프트 처음 시작하기](https://github.com/StudyFork/SwiftStudy/tree/master/CHAPTER02)
 - 이재성/정석준 [CHAPTER 03 데이터 타입 기본]()
 - 김수용/박채완 [CHAPTER 04 데이터 타입 고급]()
 - 이재성/정석준 [CHAPTER 05 연산자]()
@@ -48,7 +48,7 @@
 |주차|김수용|김태성|박채완|윤자경|이재성|정석준|
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|
 |1 19/8/11|o|o|o|o|o|o|
-|2 19/8/18|||||||
+|2 19/8/18|o|o|o|o|o|x|
 |3 19/8/25|||||||
 |4 19/9/1|||||||
 |5 19/9/8|||||||
