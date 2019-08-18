@@ -1,6 +1,6 @@
 # Chapter 2. 스위프트 처음 시작하기
 
-## 2.1 기본 명령 규칙
+## 2.1 기본 명명 규칙
 * 변수, 상수, 함수 메서드, 타입 등의 이름은 유니코드에서 지원하는 어떤 문자(한글, 한자, 영문, 숫자, 이모티콘, 등등)라도 사용할 수 있습니다. 다만 다음과 같은 예외 경우는 사용할 수 없습니다.
 
 	* 스위프트에서 미리 정한 예약어 또는 키워드  
@@ -25,7 +25,7 @@ let var : String = "string" 코드에 대해 출력되는 오류 메시지
 ```
 
 
-### 스위프트에서 세비콜론
+### 스위프트에서 세미콜론
 * 스위프트에서 명령 구문 뒤에 세미콜론(;)을 붙이는 것은 선택사항입니다. 
 
 ## 2.2 콘솔 로그
@@ -36,7 +36,7 @@ let var : String = "string" 코드에 대해 출력되는 오류 메시지
 * print() 함수의 기본원형은 public func print(items: Any... , seperator: String = defualt, terminator: String = default)로 정의되어 있습니다.
 
 ### 2.2.2 print()와 dump()함수
-print()함수는 출력하려는 인스턴스의 description property에 해당하는 내용을 출력해주고, dump()함수는 출력하려는 인스턴스의 자세한 내부 컨텐츠까지 출력해줍니다. 
+print()함수는 출력하려는 인스턴스의 description property에 해당하는 내용을 출력해주고, dump()함수는 출력하려는 인스턴스의 자세한 내부 컨텐츠(프로퍼티와 부모 클래스)까지 출력해줍니다. 
 
 ```swift
 EXAMPLE_
@@ -68,7 +68,6 @@ let view = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
 - <UIView: 0x108a0cde0; frame = (0 0; 100 100); layer = <CALayer: 0x159340cb0>> #0
     - super: UIResponder
       - NSObject 
-
 ```
 > [Example Reference](https://riptutorial.com/swift/example/25306/print---vs-dump--)
 
@@ -107,6 +106,7 @@ print("my name is \(name)")
 ### 중첩 주석
 * 스위프트에서는 여러줄 주석 안에 여러 줄 주석 또는 한 줄 주석을 넣는 중첩 주석을 지원합니다.
 * 대부분의 프로그래밍 언어는 중첩주석을 지원하지 않습니다.  
+
 ```swift
 /*여러 줄 주석 안쪽에
 /* 추가로 여러 줄 주석을 포함할 수 있으며. 
