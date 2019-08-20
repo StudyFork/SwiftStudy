@@ -55,6 +55,7 @@ print("Int64.max : \(UInt64.max)")
 ***
 ### 타입에 엄격함을 보여주는 예시 코드
 - **UInt에 음수를 대입하는 행위**
+
 <img src="./img/uint_error.png" width="400"><br/>
 표현하는 범위를 벗어났기 때문에 컴파일러에서 에러가 발생한다.
 
@@ -63,6 +64,7 @@ print("Int64.max : \(UInt64.max)")
 ```
 
 - **UInt에 Int를 대입하는 행위**
+
 <img src="./img/uint_error2.png" width="400"><br/>
 표현하는 범위안에 있지만 Int와 UInt의 데이터 타입이 다르기때문에 암묵적인 타입 캐스팅이 이루어지지 않고 컴파일러에서 에러가 발생한다.
 
@@ -81,6 +83,7 @@ let uint: UInt = UInt(int)
 ```
 
 - **Int64에 Int를 대입하는 행위**
+
 <img src="./img/type_error.png" width="400"><br/>
 표현하고자 하는 범위안에 있고 위에 설명과 같이 64비트 아키텍처에서 범위 출력 결과 같은 데이터 크기임을 확인 하였으나 스위프트상에서 Int와 Int64를 다른 타입으로 취급한다.
 
@@ -91,6 +94,7 @@ let int64: Int64 = Int64(int)
 ```
 
 - **데이터 타입의 범위를 초과하는 행위**
+
 <img src="./img/out_of_range.png" width="400"><br/>
 데이터 타입의 **`max + 1`** 또는 **`min - 1`** 코드는 컴파일 에러를 발생하고 **max** 또는 **min**을 대입 후 **범위를 초과**하는 계산식을 사용시 런타임 에러가 난다.
 ***
