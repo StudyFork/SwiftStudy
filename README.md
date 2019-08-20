@@ -14,8 +14,8 @@
 - [정석준](https://github.com/sjjeong) sjjeong
 
 ## 목차
-- 박채완/윤자경 <a href="./CHAPTER01/README.md">CHAPTER 01 스위프트</a>
-- 김수용/박채완 <a href="./CHAPTER02/CHAPTER02 - 스위프트 처음 시작하기.md">CHAPTER 02 스위프트 처음 시작하기</a>
+- 박채완/윤자경 [CHAPTER 01 스위프트](./CHAPTER01/README.md)
+- 김수용/박채완 [CHAPTER 02 스위프트 처음 시작하기](./CHAPTER02/README.md)
 - 이재성/정석준 [CHAPTER 03 데이터 타입 기본]()
 - 김수용/박채완 [CHAPTER 04 데이터 타입 고급]()
 - 이재성/정석준 [CHAPTER 05 연산자]()
