@@ -147,3 +147,50 @@ var dinner: MainDish = MainDish.pasta(taste: "크림")  // 크림 파스타
 
 
 
+### 열거형 활용: Error 표현
+
+스위프트의 열거형은 간단한 에러들을 나타내기에 적합하다. 다음은 실제 코드에서 활용할 수 있는 열거형을 이용한 에러 표현의 예시들이다.
+
+```swift
+enum IntParsingError: Error {
+    case overflow
+    case invalidInput(Character)
+}
+```
+
+String을 Int로 파싱하다가 발생할 수 있는 Error 표현이다. 연관 값을 이용해 추가 정보를 포함할 수 있다.
+
+```swift
+struct XMLParsingError: Error {
+    enum ErrorKind {
+        case invalidCharacter
+        case mismatchedTag
+        case internalError
+    }
+
+    let line: Int
+    let column: Int
+    let kind: ErrorKind
+}
+
+func parse(_ source: String) throws -> XMLDoc {
+    // ...
+    throw XMLParsingError(line: 19, column: 5, kind: .mismatchedTag)
+    // ...
+}
+```
+
+XML document를 파싱하다가 발생할 수 있는 에러를 표현하였다. 이와 같이 에러 표현을 위해 구조체를 선언하고 에러 종류를 나타내는 열거형과 함께 에러가 발생한 위치에 대한 정보를 포함시킬 수도 있다.
+
+출처: [Error - Swift Standard Library | Apple Developer Documentation](https://developer.apple.com/documentation/swift/error)
+
+
+
+
+
+
+
+
+
+
+
