@@ -9,6 +9,37 @@
 ## 3.4 Character
 
 ## 3.5 String
+값의 앞뒤에 큰따옴표를 사용하여 문자열을 표현
+```swift
+// 상수는 변경 불가능, 변수는 변경 가능
+let name: String = "yagom"
+
+// 빈 문자열 생성
+var introduce: String = String()
+
+// append()나 +연산자로 문자열을 뒤에 추가,
+introduce.append(" 제 이름은")
+introduce = introduce + " " + name + "입니다."
+```
+
+### String에 다양한 기능
+``` swift
+let name: String = "yagom"
+// 문자열 길이 구하기
+let count = name.count
+// 문자열이 비어있는지 확인
+let isEmpty = name.isEmpty
+// 문자열 비교는 ==
+let equals = name == "yagom"
+
+let helloWorld = "Hello World"
+// 접두어, 접미어 확인
+let hasPrefix = helloWorld.hasPrefix("He")
+let hasSuffix = helloWorld.hasSuffix("ld")
+// 대소문자 변환
+let upperHelloWorld = helloWorld.uppercased()
+let lowerHelloWorld = helloWorld.lowercased()
+```
 
 ### 3.5.1 특수문자
 제어문자라고도 불리는 특수문자는 모두 `\`에 특정한 문자를 조합하여 사용한다.  
@@ -27,7 +58,7 @@
   - Any와 비슷하지만 클래스의 인스턴스만 할당 가능
 
 ```swift
-var someVar: Any = "yagom"
+var somegVar: Any = "yagom"
 someVar = 50
 someVar = 100.1
 someVar = 10.0
