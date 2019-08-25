@@ -7,6 +7,12 @@
 ## 3.3 Float과 Double
 
 ## 3.4 Character
+[Unicode 9](https://unicode.org/versions/Unicode9.0.0/)의 형태인 문자 하나를 의미  
+큰따옴표를 사용해서 문자 하나를 표시
+```swift
+let alphabetA: Character = "A"
+let emoji: Character = "💁‍♂️"
+```
 
 ## 3.5 String
 값의 앞뒤에 큰따옴표를 사용하여 문자열을 표현
