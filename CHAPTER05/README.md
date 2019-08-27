@@ -53,7 +53,38 @@ let num3 = num1 + num2
 error: '+' is unavailable: Please use explicit type conversions or Strideable methods for mixed-type arithmetics.
 ```
 ### 5.1.3 비교 연산자
+두 값을 비교할 때 사용  
+Bool 값을 리턴
+|연산자|부호|설명|
+|-|-|-|
+|값이 같다|A == B|같은 값인지 비교|
+|값이 같지 않다|A != B|다른 값인지 비교|
+|값이 크거나 같다|A >= B|크거나 같은 값인지 비교|
+|값이 작거나 같다|A <= B|작거나 같은 값인지 비교|
+|값이 크다|A > B|큰 값인지 비교|
+|값이 작다|A < B|작은 값인지 비교|
+|참조가 같다|A === B|인스턴스가 같은지 비교|
+|참조가 같지 않다|A !== B|인스턴스가 다른지 비교|
+|[패턴 매치](https://zeddios.tistory.com/274)|A ~= B|패턴이 매치되는지 확인|
+### NOTE_ 참조 비교 연산자
+기본 데이터 타입은 모두 구조체로 구현되어있고 값 타입이기 때문에 값의 비교 연산자인 `==`를 사용하고 클래스의 인스턴스인 경우에만 `===`를 사용
+```swift
+let valueA: Int = 3
+let valueB: Int = 5
+let valueC: Int = 5
 
+let isSameValueAB: Bool = valueA == valueB // false
+let isSameValueBC: Bool = valueB == valueC // true
+
+class SomeClass {}
+
+let referenceA: SomeClass = SomeClass()
+let referenceB: SomeClass = SomeClass()
+let referenceC: SomeClass = referenceB
+
+let isSameReferenceAB: Bool = referenceA === referenceB // false
+let isSameReferenceBC: Bool = referenceB === referenceC // true
+```
 ### 5.1.4 삼항 조건 연산자
 
 ### 5.1.5 범위 연산자
