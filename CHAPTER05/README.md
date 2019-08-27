@@ -25,7 +25,33 @@ A! == B와 A !== B는 다르다.
 |-|-|-|
 |할당(대입) 연산자|A = B|A에 B의 값을 할당합니다. 데이터 타입이 맞지 않으면 에러 발생|
 ### 5.1.2 산술 연산자
+수학에서 쓰이는 연산자와 같은 역할
+|연산자|부호|설명|
+|-|-|-|
+|더하기 연산자|A + B|A와 B를 더한 값을 반환|
+|빼기 연산자|A - B|A와 B를 뺀 값을 반환|
+|곱하기 연산자|A * B|A와 B를 곱한 값을 반환|
+|나누기 연산자|A / B|A와 B를 나눈 값을 반환|
+|나머지 연산자|A % B|A와 B를 나눈 나머지 값을 반환|
 
+### NOTE_ 부동소수점 나머지 연산
+```swift
+스위프트는 부동소수점 타입의 나머지 연산 지원
+let number: Double = 5.0
+var result: Double = number.truncatingRemainder(dividingBy: 1.5) // 0.5
+result = 12.truncatingRemainder(dividingBy: 2.5) // 2.0
+```
+### NOTE_ 엄격한 데이터 타입
+```swift
+서로 다른 자료형끼리의 연산을 하려면 같은 타입으로 변환 후 연산해야 함
+같은 정수 타입인 Int, UInt 도 같은 타입으로 변환 해야 함
+
+let num1: Int = 4
+let num2: UInt = 5
+let num3 = num1 + num2
+위 코드와 같이 다른 타입으로 진행 한다면 아래와 같은 에러 발생 
+error: '+' is unavailable: Please use explicit type conversions or Strideable methods for mixed-type arithmetics.
+```
 ### 5.1.3 비교 연산자
 
 ### 5.1.4 삼항 조건 연산자
