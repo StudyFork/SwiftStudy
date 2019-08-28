@@ -157,7 +157,18 @@ let errorOverflowResult: UInt8 = unsignedInteger + 1 // 런타임 오류
 let overflowedValue: UInt8 = unsignedInteger &+ 1 // 0
 ```
 ### 5.1.10 기타 연산자
-
+|연산자|부호|설명|
+|-|-|-|
+|nil 병합 연산자|A ?? B|A가 nil이 아니면 A를, A가 nil이면 B를 리턴|
+|부호변경 연산자|-A|A(수)의 부호를 변경|
+|옵셔널 강제 추출 연산자|A!|A(옵셔널 객체)의 값을 강제로 추출
+|옵셔널 연산자|A?|A(옵셔널 값)를 안전하게 추출하거나 A(데이터 타입)가 옵셔널임을 표현|
+```swift
+let optionalInt: Int? = nil
+let valueInt1: Int = optionalInt != nil ? optionalInt! : 0
+let valueInt2: Int = optionalInt ?? 0
+valueInt1과 valueInt2의 식이 동일한 효과를 가진다
+```
 ## 5.2 연산자 우선순위와 결합방향
 
 ## 5.3 사용자정의 연산자
