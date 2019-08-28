@@ -136,7 +136,26 @@ Bool 연산 할 때 사용
 |A \|= B|A와 B의 OR 비트 연산 결과를 A에 할당합니다|A = A \| B|
 |A ^= B|A와 B의 XOR 비트 연산 결과를 A에 할당합니다|A = A ^ B|
 ### 5.1.9 오버플로 연산자
+기본 연산자로 값의 범위를 벗어나면 아래와 같은 에러가 발생
+```swift
+error: arithmetic operation '2147483647 + 1' (on type 'Int32') results in an overflow
+var num = Int32.max + 1
+```
+에러가 발생하지않고 오버플로가 될 수 있게 하는 연산자
+|연산자|부호|설명|
+|-|-|-|
+|오버플로 더하기 연산|&+|오버플로에 대비한 덧셈 연산|
+|오버플로 빼기 연산|&-|오버플로에 대비한 빼기 연산|
+|오버플로 곱하기 연산|&*|오버플로에 대비한 곱하기 연산|
+```swift
+var unsignedInteger: UInt8 = 0
+let errorUnderflowResult: UInt8 = unsignedInteger - 1 // 런타임 오류
+let underflowedValue: UInt8 = unsignedInteger &- 1 // 255
 
+unsignedInteger = UInt8.max
+let errorOverflowResult: UInt8 = unsignedInteger + 1 // 런타임 오류
+let overflowedValue: UInt8 = unsignedInteger &+ 1 // 0
+```
 ### 5.1.10 기타 연산자
 
 ## 5.2 연산자 우선순위와 결합방향
