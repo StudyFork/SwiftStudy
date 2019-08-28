@@ -86,7 +86,15 @@ let isSameReferenceAB: Bool = referenceA === referenceB // false
 let isSameReferenceBC: Bool = referenceB === referenceC // true
 ```
 ### 5.1.4 삼항 조건 연산자
-
+피연산자가 3개인 연산자
+|연산자|부호|설명|
+|-|-|-|
+|삼항 조건 연산자|Question ? A : B|Question(Bool)값이 참이면 A, 거짓이면 B를 리턴|
+```swift
+var valueA: Int = 3
+var valueB: Int = 5
+var biggerValue: Int = valueA > valueB ? valueA : valueB // 5
+```
 ### 5.1.5 범위 연산자
 
 ### 5.1.6 부울 연산자
