@@ -80,6 +80,77 @@
   - 중위 연산자 예) `?`
   - 후위 연산자 예) `>`, `!`, `?`
 ### 5.3.1 전위 연산자 정의와 구현
+기존에 없는 전위 연산자를 만들고 싶다면 연산자 정의를 먼저 해주어야 한다.  
+정의된 연산자는 모듈 전역에서 사용가능하다.  
+
+### 정의
+**prefix**, operator, 정의할 연산자순으로 구성.
+
+```swift
+prefix operator **
+```
+
+### 구현
+함수 구현 앞에 **prefix**라는 키워드를 붙여 내용을 구현.
+
+```swift
+prefix operator **
+
+prefix func **(value: Int) -> Int {
+  return value * value
+} 
+
+let minusFive = -5
+let sqrtMinusFive = **minusFive
+
+print(sqrtMinusFive) // 25
+```
+
+### 중복 정의
+스위프트 표준 라이브러리에 존재하는 연산자에 기능을 추가할 때는 따로 연산자를 정의 하지 않고 함수만 중복 정의(**overload**)하면 된다.  
+전위 연산자 느낌표(!)는 이미 정의가 되어있기 때문에 중복 정의(**overload**)를 합니다.
+
+```swift
+prefix func !(value: String) -> Bool {
+  return value.isEmpty
+}
+
+var stringValue: String = "yagom"
+var isEmptyString: Bool = !stringValue
+
+print(isEmptySTring) // false
+
+stringValue = ""
+isEmptyString = !stringValue
+
+print(isEmptyString) // true
+```
+***
+```swift
+prefix operator **
+
+prefix func **(value: Int) -> Int {
+  return value * value
+} 
+
+let minusFive = -5
+let sqrtMinusFive = **minusFive
+
+print(sqrtMinusFive) // 25
+
+prefix func **(value: String) -> String {
+  return value + " " + value
+}
+
+let resultString: String = **"rebirthlee"
+
+print(resultString) // rebirthlee rebirthlee
+```
+
+### MORE_ 
+- **중복 정의(overload)** 및 **재정의(override)** 는 [메서드](./../CHAPTER10/README.md)에서 자세히 다룬다.
+- 재정의가 불가능 하기 때문에 **기존 연산자의 우선순위, 결합방향**을 바꾸지 못한다.
+  
 
 ### 5.3.2 후위 연산자 정의와 구현
 
