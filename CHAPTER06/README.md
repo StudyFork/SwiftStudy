@@ -28,7 +28,28 @@ for i in 0..<2{
 }
 // 0
 // 1
+```
+```java
+public class HelloWorld{
 
+    public static void main(String []args){
+        int[] d = new int[5];
+
+        for(int i = 0 ; i< d.length; i++ ) {
+            d[i] = i;
+            // System.out.println(d[i]);
+        }
+
+        for(int i =0; i< d.length; i+=2 ){
+            System.out.println(d[i]);
+        }
+    }
+}
+// 0
+// 2
+// 4
+```
+```swift
 let swift: String = "Swfit"
 for i in swift.characters {
     print(i)
