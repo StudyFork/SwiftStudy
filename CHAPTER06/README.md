@@ -3,7 +3,7 @@
 ## 6.1 조건문
 
 ### 6.1.1 if 구문
-if 구문은 Bool 타입이어야 한다.
+if 구문은 Bool 타입이어야 한다.  
 소괄호()를 생략하고 사용이 가능하다.
 ```swift
 let first: Int = 5
@@ -18,13 +18,13 @@ if first > second {
 }
 ```
 ### 6.1.2 switch 구문
-소괄호()를 생략하고 사용이 가능하다.
-특정 case에만 동작하고 종료되기 때문에 break를 사용하지 않아도 된다.
-조건은 다양한 값이 들어갈 수 있지만 데이터 타입이 같아야 한다.
-조건에 들어가는 값이 열거형(enum)이 아니라면 default 처리를 해줘야 한다.
-case에는 범위 연산자나 where 절을 사용하여 조건을 확장 할 수 있다.
+소괄호()를 생략하고 사용이 가능하다.  
+특정 case에만 동작하고 종료되기 때문에 break를 사용하지 않아도 된다.  
+조건은 다양한 값이 들어갈 수 있지만 데이터 타입이 같아야 한다.  
+조건에 들어가는 값이 열거형(enum)이 아니라면 default 처리를 해줘야 한다.  
+case에는 범위 연산자나 where 절을 사용하여 조건을 확장 할 수 있다.  
 
-#### swift 구문 기본 구현
+#### switch 구문 기본 구현
 ```swift
 let integerValue: Int = 5
 
@@ -69,7 +69,7 @@ default:
     print("\(stringValue) said 'I don't know who you are'")
 }
 ```
-case 다음에는 꼭 실행 가능한 코드가 나와야한다.
+case 다음에는 꼭 실행 가능한 코드가 나와야한다.  
 만약 오류 없이 사용하고 싶다면 fallthrough를 사용해야한다
 ```swift
 ...
@@ -80,7 +80,7 @@ case "Nova":
     print("He or She is \(stringValue)")
 ...
 ```
-#### 튜플 switch rntjd
+#### 튜플 switch 구성
 ```swift
 typealias NameAge = (name: String, age: Int)
 
@@ -96,7 +96,7 @@ default:
     print("누구를 찾나요?")
 }
 ```
-와일드카드(_)를 사용하면 다양한 케이스를 처리 할 수 있습니다.
+와일드카드(_)를 사용하면 다양한 케이스를 처리 할 수 있습니다.  
 와일드카드 대신에 값 바인딩을 할 수 있습니다.
 #### where 사용
 ```swift
