@@ -98,7 +98,7 @@ for s in setSet{
 ### 6.2.2 while 구문
 * 특정 조건(Bool)이 성립하는 한 블록 내부의 코드를 반복해서 실행합니다.
 
-```
+```swift
 var phones: [String] = ["Note10", "iphoneXS", "iphone7", "v30"]
 
 while phones.isEmpty == false {
@@ -112,7 +112,7 @@ while phones.isEmpty == false {
 ### 6.2.3 repeat-while 구문
 * do while와 같은 역할을 합니다.
 * repeat 블록의 코드를 최초 1회 실행한 후, while 다음의 조건이 성립하면 블록 내부의 코드를 반복 실행합니다.
-```
+```swift
 var phones: [String] = ["Note10", "iphoneXS", "iphone7", "v30"]
 
 repeat {
@@ -128,7 +128,7 @@ repeat {
 * 반복문 앞에 이름과 함께 콜론을 붙여 구문의 이름을 지정해주는 구문 이름표를 사용하면 좋습니다. 
 * 이름이 지정된 구문을 제어하고자 할 때는 키워드와 구문 이름을 함께 써주면 됩니다.
 
-```
+```swift
 var numbers: [Int] = [3, 2342, 6, 3252]
 
 numbersLoop : for num in numbers {
