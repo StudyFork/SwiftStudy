@@ -89,5 +89,52 @@ while phones.isEmpty == false {
 // v30
 ```
 ### 6.2.3 repeat-while 구문
+* do while와 같은 역할을 합니다.
+* repeat 블록의 코드를 최초 1회 실행한 후, while 다음의 조건이 성립하면 블록 내부의 코드를 반복 실행합니다.
+```
+var phones: [String] = ["Note10", "iphoneXS", "iphone7", "v30"]
 
+repeat {
+    print("\(phones.removeFirst)")
+} while phones.isEmpty == false
+// Note10
+// iphoneXS
+// iphone7
+// v30
+```
 ## 6.3 구문 이름표
+* 이때 반복문을 제어하는 키워드(break, continue 등)가 어떤 범위에 적용되어야 하는지 애매하거나 큰 범위의 반복문을 종료하고 싶은데 작은 범위의 반복문만 종료되는 등 예상치 못한 실수를 할 수도 있습니다.
+* 반복문 앞에 이름과 함께 콜론을 붙여 구문의 이름을 지정해주는 구문 이름표를 사용하면 좋습니다. 
+* 이름이 지정된 구문을 제어하고자 할 때는 키워드와 구문 이름을 함께 써주면 됩니다.
+
+```
+var numbers: [Int] = [3, 2342, 6, 3252]
+
+numbersLoop : for num in numbers {
+    if num > 5 || num < 1 {
+        continue numbersLoop
+    }
+    var count: Int = 0
+    
+    printLoop: while true {
+        print(num)
+        count += 1
+        
+        if count == num {
+            break printLoop
+        }
+    }
+    
+    removeLoop : while true {
+        if numbers.first != num {
+            break numbersLoop
+        }
+        
+        numbers.removeFirest()
+    }
+}
+// 3
+// 3
+// 3
+// numbers에는 [2342, 6, 3252]가 남습니다.
+```
