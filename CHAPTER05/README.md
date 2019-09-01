@@ -161,7 +161,7 @@ print(resultString) // rebirthlee rebirthlee
 postfix operator ** // 정의
 
 postfix func **(value: Int) -> Int { // 구현
-  return value * 10
+  return value + 10
 }
 
 let five: Int = 5
@@ -255,7 +255,7 @@ print(2 ** 3) // 8,  2^3
 print(9 ** 3) // 729, 9^3
 ```
 
-### 클래스 및 구조체이 비교 연산자 구현
+### 클래스 및 구조체의 비교 연산자 구현
 
 ```swift
 class Human {
