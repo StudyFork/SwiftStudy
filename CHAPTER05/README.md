@@ -153,5 +153,41 @@ print(resultString) // rebirthlee rebirthlee
   
 
 ### 5.3.2 후위 연산자 정의와 구현
+전위 연산자와 차이는 없으며 prefix키워드 대신 **postfix**키워드로 대체 된다.
+
+### 정의 및 구현
+
+```swift
+postfix operator ** // 정의
+
+postfix func **(value: Int) -> Int { // 구현
+  return value * 10
+}
+
+let five: Int = 5
+let fivePlusTen: Int = five**
+
+print(fivePlusTen) // 15
+```
+
+### 전위 연산자와 동시 사용
+전위 연산자와 후위 연산자를 동시에 사용하면 후위 연산을 먼저 실행.
+```swift
+prefix operator **
+postfix operator **
+
+prefix func **(value: Int) -> Int {
+  return value * value
+}
+
+postfix func **(value: Int) -> Int {
+  return value + 10
+}
+
+let five: Int = 5
+let sqrtFivePlusTen: Int = **five**
+
+print(sqrtFivePlusTen) // (10 + 5) * (10 + 5) == 225
+```
 
 ### 5.3.3 중위 연산자 정의와 구현
