@@ -191,3 +191,133 @@ print(sqrtFivePlusTen) // (10 + 5) * (10 + 5) == 225
 ```
 
 ### 5.3.3 중위 연산자 정의와 구현
+전위 연산자와 후위 연산자와 크게 다르지 않으나 우선순위 그룹을 명시해줄 수 있습니다.  
+중위 연산자를 정의할 때 우선순위 그룹을 명시해주지 않으면 **DefaultPrecedence**그룹을 우선순위 그룹으로 갖는다.
+### 우선순위 그룹 정의
+
+```swift
+precedencegroup SqurePrecedence {
+    higherThan: MultiplicationPrecedence // 더 낮은 우선순위 그룹
+    lowerThan: BitwiseShiftPrecedence // 더 높은 우선순위 그룹
+    associativity: right // 결합방향(left / right / none)
+    assignment: false // 할당방향 사용(true / false)
+}
+```
+
+|키워드|설명|
+|-|-|
+|higherThan|더 낮은순위의 그룹을 정의 할때 사용|
+|lowerThan|더 높은순위의 그룹을 정의 할때 사용|
+|associativity|결합 우선 방향을 정하는 것|
+|assignment|할당방향을 사용([옵셔널 체이닝](./../CHAPTER08/README.md)과 관련사항)|
+
+
+### 중위 연산자 정의
+
+```swift
+precedencegroup SqurePrecedence {
+    higherThan: MultiplicationPrecedence // 더 낮은 우선순위 그룹
+    lowerThan: BitwiseShiftPrecedence // 더 높은 우선순위 그룹
+    associativity: right // 결합방향(left / right / none)
+    assignment: false // 할당방향 사용(true / false)
+}
+
+infix operator **: SqurePrecedence // SqurePrecedence를 적지 않으면 DefaultPrecedence를 갖는다.
+```
+
+### 중위 연산자 구현과 사용
+```swift
+precedencegroup SqurePrecedence {
+    higherThan: MultiplicationPrecedence // 더 낮은 우선순위 그룹
+    lowerThan: BitwiseShiftPrecedence // 더 높은 우선순위 그룹
+    associativity: right // 결합방향(left / right / none)
+    assignment: false // 할당방향 사용(true / false)
+}
+
+infix operator **: SqurePrecedence // SqurePrecedence를 적지 않으면 DefaultPrecedence를 갖는다.
+
+func **(lhs: Int, rhs: Int) -> Int {
+    var ret: Int = 1;
+    if rhs > 0 {
+        for _ in 1 ... rhs {
+            ret *= lhs
+        }
+    } else if rhs < 0 {
+        // 마이너스 지수에 대한 계산
+    }
+    
+    return ret;
+}
+
+print(3 ** 2 ** 3) // 6561, 3^(2^3)
+print(3 ** 8) // 6561, 3^8
+print(2 ** 3) // 8,  2^3
+print(9 ** 3) // 729, 9^3
+```
+
+### 클래스 및 구조체이 비교 연산자 구현
+
+```swift
+class Human {
+  var socialNumber: String? // 주민등록번호
+  var name: String? // 이름
+}
+
+struct SmartPhone {
+  var company: String? // 제조사
+  var model: String? // 모델
+}
+
+// Human 클래스의 인스턴스끼리 == 연산했을 때 socialNumber가 같다면 true를 반환
+func ==(lhs: Human, rhs: Human) -> Bool {
+  return lhs.socialNumber == rhs.socialNumber
+}
+
+// SmartPhone 구조체의 인스턴스끼리 == 연산했을 때 model이 같다면 true를 반환
+func ==(lhs: SmartPhone, rhs: SmartPhone) -> Bool {
+  return lhs.model == rhs.model
+}
+
+let me = Human()
+me.socialNumber = "960xxxx-1..."
+
+let you = Human()
+you.socialNumber = "980xxxx-1..."
+
+var myPhone = SmartPhone()
+myPhone.model = "GalaxyS10"
+
+var youPhone = SmartPhone()
+youPhone.model = "GalaxyS10"
+
+print(me == you) // false
+print(myPhone == youPhone) // true
+```
+
+전역함수로 구현했으나 특정 타입에 국한된 연산자 함수라면 그 타입 내부에 구현되는 것이 읽고 이해하기 더욱 좋다.
+
+### 비교 연산자 클래스 및 구조체 내부에 구현
+
+```swift
+class Human {
+  var socialNumber: String? // 주민등록번호
+  var name: String? // 이름
+  
+  // Human 클래스의 인스턴스끼리 == 연산했을 때 socialNumber가 같다면 true를 반환
+  static func ==(lhs: Human, rhs: Human) -> Bool {
+    return lhs.socialNumber == rhs.socialNumber
+  }
+}
+
+struct SmartPhone {
+  var company: String? // 제조사
+  var model: String? // 모델
+
+  // SmartPhone 구조체의 인스턴스끼리 == 연산했을 때 model이 같다면 true를 반환
+  static func ==(lhs: SmartPhone, rhs: SmartPhone) -> Bool {
+    return lhs.model == rhs.model
+  }
+}
+```
+타입 메서드로 구현한 사용자정의 연산자는 각 타입의 익스텐션으로 구현해도 된다.  
+익스텐션을 통해 타입 메서드로 구현한 사용자 정의 메서드는 [익스텐션으로 추가할 수 있는 기능](./../CHAPTER21/README.md)에서 확인 가능하다.
