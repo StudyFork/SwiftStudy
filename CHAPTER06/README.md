@@ -23,7 +23,7 @@ for i in 0...2 {
 // 1
 // 2
 
-for i in 0..<2{
+for i in 0..<2 {
     print(i)
 }
 // 0
@@ -35,7 +35,7 @@ public class HelloWorld{
     public static void main(String []args){
         int[] d = new int[5];
 
-        for(int i = 0 ; i< d.length; i++ ) {
+        for(int i = 0 ; i< d.length; i++ ){
             d[i] = i;
             // System.out.println(d[i]);
         }
@@ -50,7 +50,7 @@ public class HelloWorld{
 // 4
 ```
 ```swift
-let swift: String = "Swfit"
+let swift: String = "Swift"
 for i in swift.characters {
     print(i)
 }
@@ -80,7 +80,7 @@ for i in info{
 // ("이름", "윤자경")
 // ("생년월일", "96.11.11")
 
-for (key, value) in info{
+for (key, value) in info {
     print("\(key) \(value)")
 }
 // 이름 윤자경
@@ -102,7 +102,7 @@ for s in setSet{
 var phones: [String] = ["Note10", "iphoneXS", "iphone7", "v30"]
 
 while phones.isEmpty == false {
-    print("\(phones.removeFirst)")
+    print("\(phones.removeFirst())")
 }
 // Note10
 // iphoneXS
@@ -116,7 +116,7 @@ while phones.isEmpty == false {
 var phones: [String] = ["Note10", "iphoneXS", "iphone7", "v30"]
 
 repeat {
-    print("\(phones.removeFirst)")
+    print("\(phones.removeFirst())")
 } while phones.isEmpty == false
 // Note10
 // iphoneXS
