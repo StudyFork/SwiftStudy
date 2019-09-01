@@ -3,7 +3,20 @@
 ## 6.1 조건문
 
 ### 6.1.1 if 구문
+if 구문은 Bool 타입이어야 한다.
+소괄호()를 생략하고 사용이 가능하다.
+```swift
+let first: Int = 5
+let second: Int = 7
 
+if first > second {
+    print("first > second")
+} else if first < second {
+    print("first < second")
+} else {
+    print("first == second")
+}
+```
 ### 6.1.2 switch 구문
 
 ## 6.2 반복문
