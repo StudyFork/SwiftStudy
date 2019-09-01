@@ -75,7 +75,19 @@ for s in setSet{
 // 4
 ```
 ### 6.2.2 while 구문
+* 특정 조건(Bool)이 성립하는 한 블록 내부의 코드를 반복해서 실행합니다.
 
+```
+var phones: [String] = ["Note10", "iphoneXS", "iphone7", "v30"]
+
+while phones.isEmpty == false {
+    print("\(phones.removeFirst)")
+}
+// Note10
+// iphoneXS
+// iphone7
+// v30
+```
 ### 6.2.3 repeat-while 구문
 
 ## 6.3 구문 이름표
