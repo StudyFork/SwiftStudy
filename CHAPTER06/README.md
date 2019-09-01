@@ -74,7 +74,7 @@ for f in arrays {
 // 윤자경
 
 let info: [String: String] = ["이름" : "윤자경", "생년월일": "96.11.11"]
-for i in info{
+for i in info {
     print(info)
 } 
 // ("이름", "윤자경")
@@ -87,7 +87,7 @@ for (key, value) in info {
 // 생년월일 96.11.11
 
 let setSet: Set<Int> = [1, 2, 3, 4]
-for s in setSet{
+for s in setSet {
     print(s)
 }
 // 1
