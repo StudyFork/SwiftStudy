@@ -100,5 +100,38 @@ print("원점 도착!")
 ```
 
 ## 7.4 종료되지 않는 함수
+스위프트에는 종료(return)되지 않는 함수가 있다.  
+종료되지 않는다는 의미는 정상적으로 끝나지 않는 함수라는 뜻이다.  
+이를 비반환 함수(메서드)라고 한다.  
+이 함수가 실행시 프로세스 동작은 끝났다고 본다.  
+
+- 어디서든 호출 가능하다.
+- **[guard 구문](./../CHAPTER14/README.md)** 의 else 블록에서도 호출할 수 있다.
+- 재정의는 가능하지만 비반환 타입이라는 것은 변경 불가능.
+
+### 정의와 사용
+
+```swift
+func crashAndBurn() -> Never {
+    fatalError("뭔가 매우 매우 좋지 않는 상황")
+}
+
+crashAndBurn() // 프로세스 종료 후 오류 보고
+
+func someFunction(isAllIsWell: Bool) {
+    guard isAllIsWell else {
+        print("마을에 도적이 들었습니다!")
+        crashAndBurn()
+    }
+    
+    print("평화로운 삶!")
+}
+
+someFunction(isAllIsWell: true) // 평화로운 삶!
+someFunction(isAllIsWell: false) // 마을에 도적이 들었습니다!
+```
+
+Never 타입이 사용 되는 대표적인 예로는 fatalError 함수가 있다.  
+**[fatalError]()** 은 부록에서 설명을 찾아볼 수 있다.
 
 ## 7.5 반환 값을 무시할 수 있는 함수
