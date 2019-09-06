@@ -135,3 +135,26 @@ Never 타입이 사용 되는 대표적인 예로는 fatalError 함수가 있다
 **[fatalError]()** 은 부록에서 설명을 찾아볼 수 있다.
 
 ## 7.5 반환 값을 무시할 수 있는 함수
+개발자가 의도적으로 반환 값을 사용하지 않으면 컴파일러가 경고를 보낼때가 있다.  
+이런 경우 함수의 반환 값을 무시해도 된다는 **[@discardableResult]()** 선언 속성을 사용하면 된다.
+
+### 사용 예
+
+```swift
+func say(_ something: String) -> String {
+    print(something)
+    return something
+}
+
+@discardableResult func discardableResultSay(_ something: String) -> String {
+    print(something)
+    return something
+}
+
+// 사용하지 않아 컴파일러가 경고를 보낼 수 있음.
+say("Hello World") // Hello World
+
+// 미리 반환 값을 사용하지 않을 수 있다고 알렸기 때문에
+// 컴파일러가 경고를 하지 않음.
+discardableResultSay("World Hello")
+```
