@@ -58,4 +58,32 @@ if let jay = name, let hasFriend = friend {
 }
 // Jakyung has no friend
 
+friend = "퓨뜸띠"
+
+if let jay = name, let hasFriend = friend {
+print("\(jay) & \(hasFriend) is friend")
+} else {
+print("\(jay) has no friend")
+}
+// Jakyung & 퓨뜸띠 is friend
+```
+
 ### 8.2.3 암시적 추출 옵셔널
+* 암시적 추출 옵셔널 : 타입 뒤에 '!'를 사용
+* 옵셔널 바인딩 추출 귀찮, 로직상 nil때문에 런타임 오류가 발생하지 않을 것 같다는 확신이 들때 사용
+```swift
+var name: String! = "Jakyung"
+print(\(name)) // Jakyung
+
+name = nil
+
+//암시적 추출 옵셔널도 옵셔널이므로 바인딩을 사용할 수 있음
+if var jay = name {
+    print("not nil")
+} else {
+    print("is nil")
+}
+// is nil
+
+name.isEmpty //error
+```
