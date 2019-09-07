@@ -160,10 +160,14 @@ print("floatVal : \(floatVal), doubleVal : \(doubleVal)")
 
 <img src="./img/float_example.png" width="400"><br/>
 
-- Float타입또한 32비트 64비트 80비트크기의 형태가 존재한다
-  - **32비트** - Float32
-  - **64비트** - Float64
-  - **80비트** - Float80
+### 다양한 크기의 Float 타입
+
+|타입명|크기|
+|-|-|
+|Float32|4byte (32bit)|
+|Float64|8byte (64bit)|
+|Float80|10byte (80bit)|
+
 ### 추가적인 데이터 타입에 대한 출력 예제코드
 ```swift
 // Float32는 Float과 마찬가지로 32비트의 크기를 가지고 있으며
