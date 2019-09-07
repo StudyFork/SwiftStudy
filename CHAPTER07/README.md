@@ -30,6 +30,28 @@ class someClass {
 * 재정의(override)와 중복 정의(overload)를 모두 지원 한다.
 
 ### 7.2.1 기본적인 함수의 정의와 호출
+함수의 기본 형태
+* 함수를 정의하는 키워드는 **func** 이다.
+* 함수 이름을 지정후 매개변수는 소괄호 **()** 로 감싼다.
+* 변환 타입을 명시하기 전에는 **->** 를 사용하여 어떤 타입인지 명시를 한다.
+* 반환을 위한 키워드는 다른 언어처럼 **return** 입니다.
+
+```Swift
+func 함수이름(매개변수...) -> 반환 타입 {
+    실행 구문
+    return 변환 타입
+}
+```
+
+기본 형태의 함수 정의와 사용 예제
+
+```Swift
+func askHello(who: String) -> String {
+    return "Hey \(who), How are you today?"
+}
+
+print(askHello(who: "cat")) // Hey cat, How are you today?
+```
 
 ### 7.2.2 매개변수
 
