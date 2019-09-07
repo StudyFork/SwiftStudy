@@ -20,6 +20,57 @@
 
 ## 8.1 옵셔널 사용
 
+변수 또는 상수에 값이 없을 때 nil로 표현하며, 옵셔널 변수 또는 상수에만 nil을 할당할 수 있다.
+
+값이 없는 옵셔널 변수 또는 상수에 접근하려 하면 런타임 오류가 발생한다.
+
+```swift
+var myName: String = "Chaewan"
+myName = nil // 오류 발생
+```
+
+데이터 타입 뒤에 물음표 `?`를 붙여 옵셔널 변수 또는 상수를 선언한다.
+
+```swift
+var myName: String? = "Chaewan"
+myName = nil
+```
+
+옵셔널은 다음과 같은 상황에서 사용한다.
+
+- 함수 내부에서 제대로 처리하지 못했음을 nil을 반환하여 오류 표현
+- 매개변수를 굳이 넘기지 않아도 된다는 뜻으로 매개변수의 타입을 옵셔널로 정의
+
+옵셔널은 제네릭이 적용된 열거형으로 구현되어 있으며, ExpressibleByNilLiteral 프로토콜을 따른다. 또한 옵셔널은 값을 갖는 케이스와 그렇지 못한 케이스 두 가지로 정의되어 있으며, 값이 nil일 때는 none 케이스가 되고, 값이 있는 경우는 some 케이스가 되면서 연관 값인 Wrapped에 값이 할당된다.
+
+```
+public enum Optional<Wrapped> : ExpressibleByNilLiteral {
+		case none
+		case some(Wrapped)
+
+		public init(_ some: Wrapped)
+		/// 중략...
+}
+```
+
+이처럼 옵셔널 타입은, 다음 그림과 같이 실제 값이 옵셔널이라는 열거형의 방패막에 보호되어 래핑되어 있는 형태이다.
+
+<img src="./img/optional_box.png" width="500">
+
+옵셔널은 열거형이기 때문에 switch 구문을 통해 값이 있고 없음을 확인할 수도 있다.
+
+```swift
+func checkOptionalValue(value optionalValue: Any?) {
+    switch optionalValue {
+    case .none:
+        print("This Optional variable is nil")
+    case .some(let value):
+        print("Value is \(value)")
+    }
+}
+```
+
+
 ## 8.2 옵셔널 추출
 
 ### 8.2.1 강제 추출
