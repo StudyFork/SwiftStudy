@@ -366,7 +366,8 @@ var `var`: Any = "Hello Any"
 - 데이터 타입의 부호 비트에 대한 글 **[[참고링크]](https://ko.wikipedia.org/wiki/Signed%EC%99%80_unsigned)** **[[참고링크2]](https://ko.wikipedia.org/wiki/%EC%B5%9C%EC%83%81%EC%9C%84_%EB%B9%84%ED%8A%B8)**
 - Float, Double 타입의 대한 구조 **[[참고링크]](https://en.wikipedia.org/wiki/Single-precision_floating-point_format)** **[[참고링크(한국어)]](https://ko.wikipedia.org/wiki/%EB%B6%80%EB%8F%99%EC%86%8C%EC%88%98%EC%A0%90)**
 - FloatingPoint(Numeric Protocols) 맛보기
-```kotlin
+
+```swift
 // 제네릭으로 타입을 받지만 해당 타입에 대해서 실수형으로만 받고자
 // 하면서 동시에 실수형의 연산과 메서드를 사용 하기 위해
 // FloatingPoint로 제약을 걸어준다.
