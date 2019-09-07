@@ -215,6 +215,85 @@ getMotto()               // I'll be a full stack developer!
 ```
 
 ### 7.2.4 데이터 타입으로서의 함수
+앞서 언급했듯이 스위프트의 함수는 일급 객체이므로 하나의 데이터 타입으로 사용될 수 있습니다. 즉 각 함수는 매개변수 타입과 반환 타입으로 구성된 하나의 데이터 타입으로 사용(정의)할 수 있습니다.
+
+```Swift
+// makePromise 함수의 타입은 (String, String) -> String 입니다.
+func makePromise(_ time: String,_ who: String) -> String {
+    return "Will you meet at \(time), \(who)?"
+}
+
+// sayHelloToFriends 함수의 타입은 (String, String...) -> String 입니다.
+func sayHelloToFriends(me: String, friends names: String...) -> String {
+    var result: String = ""
+    
+    for friend in names {
+        result += "Hello \(friend)! "
+    }
+
+    result += "I'm \(me)!"
+}
+
+// askHello 함수의 타입은 (Void) -> Void 입니다. 참고로 Void 키워드를 빈 소괄호의 묶음으로 표현이 가능힙니다.
+/*
+    (Void) -> Void
+    () -> Void
+    () -> ()
+*/
+func askHello() {
+    print("Hey, How are you today?")
+}
+```
+
+#### 함수 타입의 사용
+
+> 아래 코드와 같이 함수는 데이터 타입, 전달인자, 반환 값으로 사용할 수 있습니다. 이는 스위프트의 함수가 **1급 객체(first class citizen)** 이기 때문에 가능한 일입니다.
+
+```Swift
+typealias CalculateTwoInts (Int, Int) -> Int
+
+func addTwoInts(_ a: int, _ b: Int) -> Int {
+    return a + b
+}
+
+func multiplyTwoInts(_ a: int, _ b: Int) -> Int {
+    return a * b
+}
+
+var mathFunction: CalculateTwoInts = addTwoInts
+
+// var mathFunction: (Int, Int) -> Int = addTowInts와 동일한 표현 입니다.
+print(mathFunction(2, 5))    // 2 + 5 = 7
+
+mathFunction = multiplyTwoInts
+print(mathFunction(2, 5))    // 2 * 5 = 10
+```
+
+전달인자로 함수를 넘겨줄 수도 있습니다
+```Swift
+typealias CalculateTwoInts (Int, Int) -> Int
+
+func addTwoInts(_ a: int, _ b: Int) -> Int {
+    return a + b
+}
+
+func multiplyTwoInts(_ a: int, _ b: Int) -> Int {
+    return a * b
+}
+
+// 전달인자로 함수를 전달받는 함수
+func printMathResult(_ mathFunction: CalculateTwoInts, _ a: Int, _ b: Int) {
+    print("Result : \(mathFunction(a, b))")
+}
+
+// 특정 조건에 따라 적절한 함수를 반환해주는 함수
+func chooseMathFunction(_ toAdd: Bool) -> CalculateTwoInts {
+    return toAdd ? addTwoInts : multiplyTwoInts
+}
+
+printMathResult(addTwoInts, 3, 5)                 // Result : 8
+printMathResult(chooseMathFunction(false), 3, 5)  // Result : 15
+```
 
 ## 7.3 중첩 함수
 
