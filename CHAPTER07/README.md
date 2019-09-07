@@ -10,6 +10,19 @@
 * 변환값으로 사용할 수 있다.
 
 ## 7.1 함수와 메서드
+> 함수와 메서드는 기본적으로 같지만, 상황이나 위치에 따라 다른 용어로 부르는것이다. 구조체, 클래스, 열거형 등 **특정 타입에 연관되어 사용하는 함수**를 **메서드**, **모듈 전체에서 전역**으로 사용할 수 있는 함수를 그냥 **함수**라고 부릅니다.
+
+```Swift
+func someFunction() {
+    print("Hello, Call me the \'Function\'")
+}
+
+class someClass {
+    func someMethod() {
+        print("Hello, Call me the \'Method\'")
+    }
+}
+```
 
 ## 7.2 함수의 정의와 호출
 
