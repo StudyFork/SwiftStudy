@@ -438,7 +438,7 @@ precedencegroup SqurePrecedence {
     higherThan: MultiplicationPrecedence // 더 낮은 우선순위 그룹
     lowerThan: BitwiseShiftPrecedence // 더 높은 우선순위 그룹
     associativity: right // 결합방향(left / right / none)
-    assignment: false // 할당방향 사용(true / false)
+    assignment: false // 할당사용(true / false)
 }
 
 infix operator **: SqurePrecedence // SqurePrecedence를 적지 않으면 DefaultPrecedence를 갖는다.
@@ -526,5 +526,59 @@ struct SmartPhone {
   }
 }
 ```
+
 타입 메서드로 구현한 사용자정의 연산자는 각 타입의 익스텐션으로 구현해도 된다.  
 익스텐션을 통해 타입 메서드로 구현한 사용자 정의 메서드는 [익스텐션으로 추가할 수 있는 기능](./../CHAPTER21/README.md)에서 확인 가능하다.
+
+### assignment의 간단한 예제
+
+```swift
+class A {
+    var num: Int?
+}
+
+class B {
+    var a: A?
+}
+
+class C {
+    var b: B?
+}
+
+precedencegroup SqurePrecedence {
+    higherThan: MultiplicationPrecedence // 더 낮은 우선순위 그룹
+    lowerThan: BitwiseShiftPrecedence // 더 높은 우선순위 그룹
+    associativity: right // 결합방향(left / right / none)
+    assignment: true // 할당사용(true / false)
+}
+
+infix operator **: SqurePrecedence // SqurePrecedence를 적지 않으면 DefaultPrecedence를 갖는다.
+func **(lhs: Int?, rhs: Int?) -> Int? {
+    var ret: Int = 1;
+    if rhs! > 0 {
+        for _ in 1 ... rhs! {
+            ret *= lhs!
+        }
+    } else if rhs! < 0 {
+        // 마이너스 지수에 대한 계산
+    }
+    
+    return ret;
+}
+
+var c: C? = C()
+print(c?.b?.a?.num ** 2)
+
+// assignment가 false 일때 위와 같이 사용 했을때 뜨는 런타임에러
+/* 
+ error: Playground execution aborted: error: Execution was interrupted, reason: EXC_BAD_INSTRUCTION (code=EXC_I386_INVOP, subcode=0x0).
+ The process has been left at the point where it was interrupted, use "thread return -x" to return to the state before expression evaluation.
+*/
+
+// assignment가 false 일때 모든 옵셔널값이 들어가 있다면 런타임에러는 뜨지 않는다.
+// c?.b = B()
+// c?.b?.a = A()
+// c?.b?.a?.num = 10
+// print(c?.b?.a?.num ** 2)
+```
+
