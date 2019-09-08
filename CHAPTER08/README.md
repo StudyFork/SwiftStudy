@@ -20,6 +20,7 @@ name = nil
 jayjay = name! // 런타임 오류 남
 ```
 <img src="./img/img1_error.png" width="250"/>
+<img src="./img/img1_error.png" width="250">
 
 ### 8.2.2 옵셔널 바인딩
 * 옵셔널 바인딩 : 옵셔널에 값이 있다면 옵셔널에서 추출한 값을 일정 블록 안에서 사용할 수 있는 상수나 변수로 할당해서 옵셔널이 아닌 형태로 사용할 수 있도록 해줌
