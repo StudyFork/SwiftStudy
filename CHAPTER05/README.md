@@ -189,6 +189,47 @@ let valueInt2: Int = optionalInt ?? 0
 valueInt1과 valueInt2의 식이 동일한 효과를 가진다
 ```
 ## 5.2 연산자 우선순위와 결합방향
+스위프트는 연산자 **우선순위**를 따로 지정 해놓았기 때문에 코딩하다가 헷갈리는 경우 확인하면 된다.  
+우선순위가 높은 연산자는 자신에 비해 낮은 우선순위가 낮은 연산자보다 먼저 실행된다.  
+**사용자정의 연산자** 또한 이 규칙에 따라 실행 순서가 결정 된다.  
+
+**결합방향**도 따로 지정되어 있다.  
+같은 우선순위에 있는 연산자끼리 나열 되었을 때 어느 방향으로 그룹지을 것인지 나타낸다.
+### 예시
+`1 + 2 + 3 + 4` +의 결합방향은 왼쪽이기 때문에 `(((1 + 2) + 3) + 4)`와 같이 왼쪽부터 그룹이 묶인다.
+
+기본 연산자들의 우선도와 결합방향을 알아보려면 다음 **[표준 라이브러리 문서](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)** 를 참고.
+
+연산자 우선순위 그룹은 절대치가 아닌 **상대적인 수치**이다.
+
+### 우선순위 그룹(우선순위 높은 순)
+|연산자 우선순위 그룹 이름|결합 방향|할당 방향 사용|
+|-|-|-|
+|DefaultPrecedence|none|false|
+|BitwiseShiftPrecedence|none|false|
+|MultiplicationPrecedence|left|false|
+|AdditionPrecedence|left|false|
+|RangeFormationPrecedence|none|false|
+|CastingPrecedence|none|false|
+|NilCoalescingPrecedence|right|false|
+|ComparisonPrecedence|none|false|
+|LogicalConjunctionPrecedence|left|false|
+|LogicalDisjunctionPrecedence|left|false|
+|TernaryPrecedence|right|false|
+|AssignmentPrecedence|right|true|
+|FunctionArrowPrecedence|right|false|
+
+### 예제
+
+```swift
+let intValue: Int = 1
+let resultValue1: Int = intValue << 3 + 5 // 8 + 5 => 13
+let resultValue2: Int = 1 * 3 + 5         // 3 + 5 => 8
+```
+- `<<`은 **BitwiseShiftPrecedence** 연산자 우선순위 그룹을 가진다.
+- `+`은 **AdditionPrecedence** 연산자 우선순위 그룹을 가진다.
+- `*`은 **MultiplicationPrecedence** 연산자 우선순위 그룹을 가진다.
+
 
 ## 5.3 사용자정의 연산자
 스위프트에서는 프로그래머의 입맛에 맞게 연산자 역할을 부여할 수 있음  
@@ -397,7 +438,7 @@ precedencegroup SqurePrecedence {
     higherThan: MultiplicationPrecedence // 더 낮은 우선순위 그룹
     lowerThan: BitwiseShiftPrecedence // 더 높은 우선순위 그룹
     associativity: right // 결합방향(left / right / none)
-    assignment: false // 할당방향 사용(true / false)
+    assignment: false // 할당사용(true / false)
 }
 
 infix operator **: SqurePrecedence // SqurePrecedence를 적지 않으면 DefaultPrecedence를 갖는다.
@@ -485,5 +526,59 @@ struct SmartPhone {
   }
 }
 ```
+
 타입 메서드로 구현한 사용자정의 연산자는 각 타입의 익스텐션으로 구현해도 된다.  
 익스텐션을 통해 타입 메서드로 구현한 사용자 정의 메서드는 [익스텐션으로 추가할 수 있는 기능](./../CHAPTER21/README.md)에서 확인 가능하다.
+
+### assignment의 간단한 예제
+
+```swift
+class A {
+    var num: Int?
+}
+
+class B {
+    var a: A?
+}
+
+class C {
+    var b: B?
+}
+
+precedencegroup SqurePrecedence {
+    higherThan: MultiplicationPrecedence // 더 낮은 우선순위 그룹
+    lowerThan: BitwiseShiftPrecedence // 더 높은 우선순위 그룹
+    associativity: right // 결합방향(left / right / none)
+    assignment: true // 할당사용(true / false)
+}
+
+infix operator **: SqurePrecedence // SqurePrecedence를 적지 않으면 DefaultPrecedence를 갖는다.
+func **(lhs: Int?, rhs: Int?) -> Int? {
+    var ret: Int = 1;
+    if rhs! > 0 {
+        for _ in 1 ... rhs! {
+            ret *= lhs!
+        }
+    } else if rhs! < 0 {
+        // 마이너스 지수에 대한 계산
+    }
+    
+    return ret;
+}
+
+var c: C? = C()
+print(c?.b?.a?.num ** 2)
+
+// assignment가 false 일때 위와 같이 사용 했을때 뜨는 런타임에러
+/* 
+ error: Playground execution aborted: error: Execution was interrupted, reason: EXC_BAD_INSTRUCTION (code=EXC_I386_INVOP, subcode=0x0).
+ The process has been left at the point where it was interrupted, use "thread return -x" to return to the state before expression evaluation.
+*/
+
+// assignment가 false 일때 모든 옵셔널값이 들어가 있다면 런타임에러는 뜨지 않는다.
+// c?.b = B()
+// c?.b?.a = A()
+// c?.b?.a?.num = 10
+// print(c?.b?.a?.num ** 2)
+```
+
