@@ -19,7 +19,7 @@ print(\(jayjay))
 name = nil
 jayjay = name! // 런타임 오류 남
 ```
-<img src="./img/img1_error.png" width="250">
+<img src="./img/img1_error.png" width="400">
 
 ### 8.2.2 옵셔널 바인딩
 * 옵셔널 바인딩 : 옵셔널에 값이 있다면 옵셔널에서 추출한 값을 일정 블록 안에서 사용할 수 있는 상수나 변수로 할당해서 옵셔널이 아닌 형태로 사용할 수 있도록 해줌
@@ -49,7 +49,7 @@ let jay = name ?? "nil"
 guard let name = jay else {return}
 ```
 * guard sample : tableView cell 지정
-<img src="./img/img3_guard.png" width="300">
+<img src="./img/img3_guard.png" width="400">
 
 * 옵셔널 바인딩을 통해 한번에 여러 옵셔널의 값을 추출할 수 있음.
 * 쉼표(,)를 사용해 바인딩 할 옵셔널을 나열하면 됩니다.
@@ -95,4 +95,4 @@ if var jay = name {
 name.isEmpty //error
 ```
 * viewController에 view를 지정을 할 때 사용
-<img src="./img/img2_823.png" width="250">
+<img src="./img/img2_823.png" width="400">
