@@ -85,11 +85,11 @@ print(makePromise(time: "10:30", who: "taesung")) // Will you meet at 10:30, tae
 전달인자의 레이블도 변경이 가능할까?
 > 보통 함수를 정의할 때 매개변수를 정의하면 매개변수 이름과 전달인자 레이블을 같은 이름으로 사용할 수 있지만 전달인자 레이블을 별도로 지정하면 함수 외부에서 매개변수의 역활을 좀 더 명확히 할 수 있다. 전달인자 레이블을 사용하려면 함수 정의에서 매개변수 이름 앞에 한칸을 띄운 후 전달 인자 레이블을 작성하면 됩니다.
 ```Swift
-func seyHello(from myName: String,to name: String) -> String {
+func seyHello(from myName: String, to name: String) -> String {
     return "Hello \(name)! I'm \(myName)"
 }
 
-print(seyHello(from: "taesung", "cat")) // Hello cat! I'm taesung
+print(seyHello(from: "taesung", to: "cat")) // Hello cat! I'm taesung
 ```
 
 
@@ -129,7 +129,7 @@ func askHello(to who: String, _ times: Int = 3) -> String {
 }
 
 print(askHello(to: "cat", 2)) // Hey cat, How are you today?Hey cat, How are you today?
-print(askHello(to: "cat")) // Hey cat, How are you today?Hey cat, How are you today?today?Hey cat, How are you today?
+print(askHello(to: "cat")) // Hey cat, How are you today?Hey cat, How are you today?Hey cat, How are you today?
 ```
 
 > 기본값이 없는 매개변수는 기본값이 있는 매개변수 앞에 사용하는것이 좋다. 보통 기본값이 없는 매개변수는 대체로 함수를 사용함에 있어 중요한 값을 전달할 가능성이 높기 때문입니다.
@@ -146,10 +146,13 @@ func sayHelloToFriends(me: String, friends names: String...) -> String {
     }
 
     result += "I'm \(me)!"
+    return result
 }
 
 print(sayHelloToFriends(me: "taesung", friends: "C++", "Java", "Swift"))
-// Hellow C++! Hellow Java! Hellow Swift! I'm taesung
+// Hello C++! Hello Java! Hello Swift! I'm taesung
+print(sayHelloToFriends(me: "taesung"))
+// I'm taesung!
 ```
 > 함수의 **전달인자로 값을 전달할 때는 보통 값을 복사해서 전달합니다.** 값이 아닌 **참조 포인터(*)를 전달하려면 입출력 매개변수를 사용합니다.** 값 타입 데이터의 참조를 전달인자로 보내면 함수 내부에서 참조하여 원래 값을 변경합니다. 하지만 이 방법은 **함수 외부의 값에 어떤 영향을 줄지 모르기 때문에** 함수형 프로그래밍 패러다임에서는 **지양하는 패턴이다.**
 
@@ -252,11 +255,11 @@ func askHello() {
 ```Swift
 typealias CalculateTwoInts (Int, Int) -> Int
 
-func addTwoInts(_ a: int, _ b: Int) -> Int {
+func addTwoInts(_ a: Int, _ b: Int) -> Int {
     return a + b
 }
 
-func multiplyTwoInts(_ a: int, _ b: Int) -> Int {
+func multiplyTwoInts(_ a: Int, _ b: Int) -> Int {
     return a * b
 }
 
@@ -273,11 +276,11 @@ print(mathFunction(2, 5))    // 2 * 5 = 10
 ```Swift
 typealias CalculateTwoInts (Int, Int) -> Int
 
-func addTwoInts(_ a: int, _ b: Int) -> Int {
+func addTwoInts(_ a: Int, _ b: Int) -> Int {
     return a + b
 }
 
-func multiplyTwoInts(_ a: int, _ b: Int) -> Int {
+func multiplyTwoInts(_ a: Int, _ b: Int) -> Int {
     return a * b
 }
 
